@@ -1,4 +1,10 @@
-# GaussianRoom
+<div align="center">
+
+  <h1 align="center">GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction</h1>
+<!--   <h2 align="center">ICML 2024</h2> -->
+  
+
+
 [Haodong Xiang*](xxx), [Xinghui Li*](xxx), [Xiansong Lai](xxx), [Wanting Zhan](https://jianglh-whu.github.io/), [Zhichao Liao](xxx), [Kai Cheng](https://cklibra.github.io/)✉, [Xueping Liu](https://www.sigs.tsinghua.edu.cn/lxp/main.htm)✉ <br />
 
 
