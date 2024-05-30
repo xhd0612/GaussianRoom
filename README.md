@@ -1,2 +1,2 @@
-# GaussianRoom (Coming soon)
+# GaussianRoom (coming soon)
 ![overview](./figure/overview.png)
