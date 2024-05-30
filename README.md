@@ -9,10 +9,13 @@
 
 
 ### [[`Project Page`](https://xhd0612.github.io/GaussianRoom.github.io/)][[`arxiv`](https://arxiv.org/abs/xxxx)]
-
 </div>
 
-## Overview
+
+## 📃 Abstract
+Recently, 3D Gaussian Splatting(3DGS) has revolutionized neural rendering with its high-quality rendering and real-time speed. However,  when it comes to indoor scenes with a significant number of textureless areas, 3DGS yields incomplete and noisy reconstruction results due to the poor initialization of the point cloud and under-constrained optimization. Inspired by the continuity of signed distance field (SDF), which naturally has advantages in modeling surfaces, we present a unified optimizing framework integrating neural SDF with 3DGS.This framework incorporates a learnable neural SDF field to guide the densification and pruning of Gaussians, enabling Gaussians to accurately model scenes even with poor initialized point clouds. At the same time, the geometry represented by Gaussians improves the efficiency of the SDF field by piloting its point sampling. Additionally, we regularize the optimization with normal and edge priors to eliminate geometry ambiguity in textureless areas and improve the details. Extensive experiments in ScanNet and ScanNet++ show that our method achieves state-of-the-art performance in both surface reconstruction and novel view synthesis.
+
+## 🧭 Overview
 <p align="center">
 <img src="./figure/overview.png" width=100% height=100% 
 class="center">
@@ -24,5 +27,5 @@ GaussianRoom integrates neural SDF within 3DGS and forms a positive cycle improv
     (c) We introduce monocular normal prior and edge prior, addressing the challenges of texture-less areas and fine structures indoors.
 
 
-### Our code is coming soon.
+## Our code is coming soon.
     
