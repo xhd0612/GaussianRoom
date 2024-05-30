@@ -1,2 +1,2 @@
 # GaussianRoom
-[overview](./figure/overview.pdf)
+![overview](./figure/overview.png)
