@@ -27,7 +27,9 @@ GaussianRoom integrates neural SDF within 3DGS and forms a positive cycle improv
     (c) We introduce monocular normal prior and edge prior, addressing the challenges of texture-less areas and fine structures indoors.
 
 
-## Our code is coming soon.
+## 🌏 Our code is coming soon.
+
+
     
 ## 🖊 Citation
 If you find this project useful in your research, please consider cite:
