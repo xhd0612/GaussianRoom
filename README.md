@@ -5,7 +5,7 @@
   
 
 
-[Haodong Xiang*](xxx), [Xinghui Li*](xxx), [Xiansong Lai](xxx), [Wanting Zhang](xxx), [Zhichao Liao](xxx), [Kai Cheng](https://cklibra.github.io/)✉, [Xueping Liu](https://www.sigs.tsinghua.edu.cn/lxp/main.htm)✉ <br />
+[Haodong Xiang*](https://github.com/xhd0612), [Xinghui Li*](xxx), [Xiansong Lai](xxx), [Wanting Zhang](xxx), [Zhichao Liao](xxx), [Kai Cheng](https://cklibra.github.io/)✉, [Xueping Liu](https://www.sigs.tsinghua.edu.cn/lxp/main.htm)✉ <br />
 
 
 ### [[`Project Page`](https://xhd0612.github.io/GaussianRoom.github.io/)][[`arxiv`](https://arxiv.org/abs/2405.19671)][[`Paper`](https://arxiv.org/pdf/2405.19671)]
