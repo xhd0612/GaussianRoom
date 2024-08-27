@@ -28,6 +28,7 @@ GaussianRoom integrates neural SDF within 3DGS and forms a positive cycle improv
 
 
 ## 🌏 Our code is coming soon.
+Thank you all for your attention. I have been busy with my internship and the autumn recruitment recently. I expect to have some free time in October, and at the latest, I will make it open source in November.
 
 
     
