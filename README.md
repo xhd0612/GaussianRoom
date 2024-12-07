@@ -3,7 +3,7 @@
 <h1 align="center">GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction</h1>
 <!--   <h2 align="center">ICML 2024</h2> -->
 
-[Haodong Xiang*](https://github.com/xhd0612), [Xinghui Li*](xxx), [Kai Cheng*](https://cklibra.github.io/), [Xiansong Lai](xxx), [Wanting Zhang](xxx), [Zhichao Liao](xxx), [Long Zeng](xxx)✉, [Xueping Liu](https://www.sigs.tsinghua.edu.cn/lxp/main.htm)✉ `<br />`
+[Haodong Xiang*](https://github.com/xhd0612), [Xinghui Li*](xxx), [Kai Cheng*](https://cklibra.github.io/), [Xiansong Lai](xxx), [Wanting Zhang](xxx), [Zhichao Liao](xxx), [Long Zeng](xxx)✉, [Xueping Liu](https://www.sigs.tsinghua.edu.cn/lxp/main.htm)✉
 
 ### [[`Project Page`](https://xhd0612.github.io/GaussianRoom.github.io/)][[`arxiv`](https://arxiv.org/abs/2405.19671)][[`Paper`](https://arxiv.org/pdf/2405.19671)]
 
@@ -38,7 +38,7 @@ GaussianRoom integrates neural SDF within 3DGS and forms a positive cycle improv
 git clone https://github.com/xhd0612/GaussianRoom.git
 ```
 
-### Enviroment setup
+### Environment setup
 
 ```
 conda create -n GaussianRoom python=3.9
@@ -50,7 +50,7 @@ pip install -r requirements.txt
 
 ### Data structure
 
-```shell
+``` shell
 data/
 ├── scene_name-GS/
 │   ├── images/
@@ -92,15 +92,14 @@ We save the edge maps in `.png` format to `data/scene_name-SDF/pred_edge `, and 
 
 ```
 
-## 📝 LICENSE
 
 ## 📜 Acknowledgement
 
-Thanks to excellent open-source projects like [3dgs](https://github.com/graphdeco-inria/gaussian-splatting) , [neus](https://github.com/Totoro97/NeuS), [neuris](https://github.com/jiepengwang/NeuRIS), and [gaussianpro](https://github.com/kcheng1021/GaussianPro), the open-sourcing of this work is a small contribution back to the open-source community.
+Thanks to excellent open-source projects like [3dgs](https://github.com/graphdeco-inria/gaussian-splatting), [neus](https://github.com/Totoro97/NeuS), [neuris](https://github.com/jiepengwang/NeuRIS), and [gaussianpro](https://github.com/kcheng1021/GaussianPro), the open-sourcing of this work is a small contribution back to the open-source community.
 
 ## 🖊 Citation
 
-If you find this project useful in your research, please consider cite:
+If our work is helpful to your research, please consider citing:
 
 ```
 @article{xiang2024gaussianroom,
