@@ -40,6 +40,8 @@ git clone https://github.com/xhd0612/GaussianRoom.git
 
 ### Environment setup
 
+It is recommended to manually install some modules here, especially the submodules required by 3DGS.
+
 ```
 conda create -n GaussianRoom python=3.9
 conda activate GaussianRoom 
@@ -52,6 +54,7 @@ pip install -r requirements.txt
 
 ```shell
 data/
+├── intrinsic_depth.txt
 ├── scene_name-GS/
 │   ├── images/
 │   └── sparse/
