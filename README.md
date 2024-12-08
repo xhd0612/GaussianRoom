@@ -50,7 +50,7 @@ pip install -r requirements.txt
 
 ### Data structure
 
-``` shell
+```shell
 data/
 ├── scene_name-GS/
 │   ├── images/
@@ -80,18 +80,11 @@ We save the edge maps in `.png` format to `data/scene_name-SDF/pred_edge `, and 
 
 ## 🎮 Run the codes
 
-### Training
+The required GPU memory for running the code might be quite large, so it's recommended to run it on a GPU with more than 32GB of VRAM.
 
 ```
-
+bash run.sh
 ```
-
-### Evaluation
-
-```
-
-```
-
 
 ## 📜 Acknowledgement
 
