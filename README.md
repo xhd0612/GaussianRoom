@@ -27,8 +27,9 @@ GaussianRoom integrates neural SDF within 3DGS and forms a positive cycle improv
 
 ## 🌏 News
 
-- [ ] Code v0  release
-- [ ] Dataset sample
+- [ ✔️ ] Code version0  release
+- [ ✔️ ] Dataset sample
+
 
 ## 📌 Setup
 
