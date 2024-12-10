@@ -27,9 +27,8 @@ GaussianRoom integrates neural SDF within 3DGS and forms a positive cycle improv
 
 ## 🌏 News
 
-- [ ✔️ ] Code version0  release
-- [ ✔️ ] Dataset sample
-
+- [ ✔️ ] 20241209 Code version0  release
+- [ ✔️ ] 20241209 Dataset sample
 
 ## 📌 Setup
 
@@ -86,7 +85,10 @@ We save the edge maps in `.png` format to `data/scene_name-SDF/pred_edge `, and 
 
 The required GPU memory for running the code might be quite large, so it's recommended to run it on a GPU with more than 32GB of VRAM.
 
+Before running `run.sh`, you need to modify the file paths in it to match your local paths.
+
 ```
+cd GaussianRoom
 bash run.sh
 ```
 

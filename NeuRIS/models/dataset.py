@@ -98,10 +98,15 @@ class Dataset:
                 break
         assert len(images_lis) > 0
 
-        # ### 方便索引
-        # self.image_names = [image_path.split('/')[-1].split('.')[0] for image_path in images_lis]
+        self.n_images_ori = len(images_lis)
+        
+        ### data split 1/10 for test 
+        # images_lis = [img for index, img in enumerate(images_lis) if (index + 0) % 10 != 0] # for train
+        # # images_lis = [img for index, img in enumerate(images_lis) if (index + 0) % 10 == 0] # for test
+        # self.vec_stem_files = [img for index, img in enumerate(self.vec_stem_files) if (index + 0) % 10 != 0 ]
         
         self.n_images = len(images_lis)
+        
         logging.info(f"Read {self.n_images} images.")
         self.images_lis = images_lis
         self.images_np = np.stack([self.read_img(im_name, self.resolution_level) for im_name in images_lis]) / 256.0
@@ -116,7 +121,9 @@ class Dataset:
             self.images_np[np.where(self.masks_np < 0.5)] = 0.0
 
         # world_mat: projection matrix: world to image
-        self.world_mats_np = [camera_dict['world_mat_%d' % idx].astype(np.float32) for idx in range(self.n_images)]
+        
+        self.world_mats_np = [camera_dict['world_mat_%d' % idx].astype(np.float32) for idx in range(self.n_images_ori)]
+        
 
         self.scale_mats_np = []
 
@@ -124,8 +131,12 @@ class Dataset:
         if self.estimate_scale_mat:
             self.scale_mats_np = self.estimated_scale_mat()
         else:
-            self.scale_mats_np = [camera_dict['scale_mat_%d' % idx].astype(np.float32) for idx in range(self.n_images)]
+            self.scale_mats_np = [camera_dict['scale_mat_%d' % idx].astype(np.float32) for idx in range(self.n_images_ori)]
 
+        ### data split
+        # self.world_mats_np = [mat for index, mat in enumerate(self.world_mats_np) if (index + 0) % 10 != 0]
+        # self.scale_mats_np = [mat for index, mat in enumerate(self.scale_mats_np) if (index + 0) % 10 != 0]
+        
         self.intrinsics_all = []
         self.pose_all = []
 

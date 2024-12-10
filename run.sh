@@ -7,8 +7,8 @@ train_port=6000
 # ---------------------------------dir conf---------------------------------
 dir_base=/home/xhd/xhd/GaussianRoom
 dir_dataset=/home/xhd/xhd/0-dataset/GaussianRoomData
-dir_sdf_output=/home/xhd/xhd/0-output/test001/sdf_output
-dir_gs_output=/home/xhd/xhd/0-output/test001/gs_output
+dir_sdf_output=/home/xhd/xhd/0-output/test009/sdf_output
+dir_gs_output=/home/xhd/xhd/0-output/test009/gs_output
 
 # ---------------------------------exp conf---------------------------------
 exp="1234567"
@@ -57,31 +57,31 @@ do
         fi
 
         
-        # python train.py \
-        #     -s ${dir_dataset}/${scene}-GS \
-        #     -m ${dir_gs_output} \
-        #     --eval \
-        #     --iterations ${gs_iteration} \
-        #     --port ${train_port} \
-        #     --start_checkpoint ${dir_dataset}/pretrained_${scene}/chkpnt15000.pth \
-        #     --mode train \
-        #     --conf ${dir_base}/confs/template.conf \
-        #     --scene_name scene${scene} \
-        #     --exp_name scene${scene}-${exp_name} \
-        #     --data_dir ${dir_dataset} \
-        #     --exp_dir ${dir_sdf_output} \
-        #     --anchor_interval ${panchor_interval} \
-        #     --anchor_extend ${panchor_extend} \
-        #     --anchor_knn ${panchor_knn} \
-        #     --no_sam_iter ${pno_sam_iter} \
-        #     --geo_interval ${pgeo_interval} \
-        #     --anchor_thres ${panchor_thres} \
-        #     --sdf2gs_from ${psdf2gs_from}\
-        #     --sdf2gs_end ${psdf2gs_end}\
-        #     --gs2sdf_from ${pgs2sdf_from}\
-        #     --gs_post_iter ${pgs_post_iter}\
-        #     --sam_add_len ${psam_add_len} \
-        #     --exp_conf ${exp} 
+        python train.py \
+            -s ${dir_dataset}/${scene}-GS \
+            -m ${dir_gs_output} \
+            --eval \
+            --iterations ${gs_iteration} \
+            --port ${train_port} \
+            --start_checkpoint ${dir_dataset}/pretrained_${scene}/chkpnt15000.pth \
+            --mode train \
+            --conf ${dir_base}/confs/template.conf \
+            --scene_name scene${scene} \
+            --exp_name scene${scene}-${exp_name} \
+            --data_dir ${dir_dataset} \
+            --exp_dir ${dir_sdf_output} \
+            --anchor_interval ${panchor_interval} \
+            --anchor_extend ${panchor_extend} \
+            --anchor_knn ${panchor_knn} \
+            --no_sam_iter ${pno_sam_iter} \
+            --geo_interval ${pgeo_interval} \
+            --anchor_thres ${panchor_thres} \
+            --sdf2gs_from ${psdf2gs_from}\
+            --sdf2gs_end ${psdf2gs_end}\
+            --gs2sdf_from ${pgs2sdf_from}\
+            --gs_post_iter ${pgs_post_iter}\
+            --sam_add_len ${psam_add_len} \
+            --exp_conf ${exp} 
             
 
         # -----------------------------val mesh-----------------------------

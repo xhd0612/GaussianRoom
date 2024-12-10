@@ -30,9 +30,9 @@ from utils.graphics_utils import depth_propagation, check_geometric_consistency
 import torchvision
 import numpy as np
 import imageio
-from submodules.surface_normal_uncertainty.models.NNET import NNET
-import submodules.surface_normal_uncertainty.utils.utils as sne_utils
-from submodules.surface_normal_uncertainty.data.dataloader_custom import CustomLoader
+# from submodules.surface_normal_uncertainty.models.NNET import NNET
+# import submodules.surface_normal_uncertainty.utils.utils as sne_utils
+# from submodules.surface_normal_uncertainty.data.dataloader_custom import CustomLoader
 
 import matplotlib
 matplotlib.use('Agg')

@@ -71,6 +71,47 @@ def write_images(dir, imgs, stems = None, ext_img = '.png', color_space = None):
             path = f'{dir}/{stems[i]}{ext_img}'
         write_image(path, imgs[i], color_space)
 
+# def read_images(dir, target_img_size = None, interpolation=cv2.INTER_LINEAR, img_ext = '.png', use_rgb_mode = False, vec_stems = None):
+#     f'''Read images in directory with extrension {img_ext}
+#     Args:
+#         dir: directory of images
+#         target_img_size: if not none, resize read images to target size
+#         img_ext: defaut {img_ext}
+#         use_rgb_mode: convert brg to rgb if true
+#     Return:
+#         imgs: N*W*H
+#         img_stems
+#     '''
+#     if img_ext == '.npy':
+#         read_img = lambda path : np.load(path)
+#     elif img_ext == '.npz':
+#         read_img = lambda path : np.load(path)['arr_0']
+#     elif img_ext in ['.png', '.jpg']:
+#         read_img = lambda path : read_image(path)
+#     else:
+#         raise NotImplementedError
+
+#     vec_path = sorted(glob.glob(f"{dir}/**{img_ext}"))
+#     if vec_stems is not None:
+#         vec_path = []
+#         for stem_curr in vec_stems:
+#             vec_path.append(f'{dir}/{stem_curr}{img_ext}')
+#         vec_path = sorted(vec_path)
+
+#     rgbs = []
+#     img_stems = []
+#     for i in range(len(vec_path)):
+#         img = read_img(vec_path[i])
+#         if (target_img_size != None) and (target_img_size[0] != img.shape[1]):
+#             img= cv2.resize(img, target_img_size, interpolation=cv2.INTER_LINEAR)
+#         if use_rgb_mode:
+#             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+#         rgbs.append(img)
+
+#         _, stem, _ = IOUtils.get_path_components(vec_path[i])
+#         img_stems.append(stem)
+#     return np.array(rgbs), img_stems
+
 def read_images(dir, target_img_size = None, interpolation=cv2.INTER_LINEAR, img_ext = '.png', use_rgb_mode = False, vec_stems = None):
     f'''Read images in directory with extrension {img_ext}
     Args:
@@ -110,7 +151,13 @@ def read_images(dir, target_img_size = None, interpolation=cv2.INTER_LINEAR, img
 
         _, stem, _ = IOUtils.get_path_components(vec_path[i])
         img_stems.append(stem)
+        
     return np.array(rgbs), img_stems
+    
+    ### data split 1/10 for test
+    # rgbs_filtered = np.array([img for index, img in enumerate(rgbs) if (index + 0) % 10 != 0])
+    # img_stems_filtered = [stem for index, stem in enumerate(img_stems) if (index + 0) % 10 != 0]
+    # return rgbs_filtered, img_stems_filtered
 
 def get_planes_from_normalmap(dir_pred, thres_uncertain = 0):
     '''Get normals from normal map for indoor dataset (ScanNet), which was got by the following paper:
