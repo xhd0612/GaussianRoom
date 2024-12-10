@@ -360,15 +360,6 @@ class Runner:
                     # so = self.sdf_network_fine.sdf(rays_o)[:, 0] # 1024 大于0 正常
                     factor = sn * sf
                     if factor.any() >= 0: # 没有正常穿过表面
-                        # print("are you ok????????????????????????????????")
-                        # print("(factor >= 0).sum(): ", (factor >= 0).sum())
-                        # print("(sn < 0).sum(): ", (sn <= 0).sum())
-                        # print("(sf > 0).sum(): ", (sf >= 0).sum())
-                        # near = torch.where(sn.any() <= 0, near - torch.tensor(0.2), near)
-                        # far = torch.where(sf.any() >= 0, far + torch.tensor(0.2), far)
-
-                        # near = torch.where(sn.any() <= 0, near - torch.abs(sn.min()) - torch.tensor(0.2), near)
-                        # far = torch.where(sf.any() >= 0, far + torch.abs(sf.max()) + torch.tensor(0.2), far)
                         near = torch.where(sn.any() <= 0, near - torch.tensor(self.args.sam_add_len), near) 
                         far = torch.where(sf.any() >= 0, far + torch.tensor(self.args.sam_add_len), far)
                     # -------------------------------------------------------------------------------------------------
@@ -495,7 +486,7 @@ class Runner:
     def get_model_input(self, image_perm, iter_i, gs_render_conf):
         input_model = {}
 
-        idx_img = image_perm[self.iter_step % self.dataset.n_images] # 是由iter选择图片
+        idx_img = image_perm[self.iter_step % self.dataset.n_images] 
         self.curr_img_idx = idx_img
         data, pixels_x, pixels_y,  normal_sample, planes_sample, subplanes_sample = self.dataset.random_get_rays_at(idx_img, self.batch_size)
         # [rays_o, rays_v, color, mask] pixels_x, pixels_y, normal_sample, planes_sample, subplanes_sample

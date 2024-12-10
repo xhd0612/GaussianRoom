@@ -207,16 +207,16 @@ def training(args, dataset, opt, pipe, testing_iterations, saving_iterations, ch
         view_cams = scene.getTrainCameras().copy()
         gs_render_conf = scene, view_cams, gaussians, pipe, background, args.gs2sdf_from 
         # gs_render_conf = scene, view_cams, GAUSSIAN_ORI, pipe, background, args.gs2sdf_from 
-        input_model, logs_input = runner.get_model_input(image_perm, iter_i, gs_render_conf) # input_model.pixels_x pixels_y pixels_uv pixels_vu torch.Size([512]) 这些pixels是啥意思
+        input_model, logs_input = runner.get_model_input(image_perm, iter_i, gs_render_conf) 
         logs_summary.update(logs_input)
 
-        render_out, logs_render = runner.renderer.render(input_model['rays_o'], input_model['rays_d'],    # input_model['rays_o'] input_model['rays_d'] torch.Size([512, 3]) 512是batch_size?
-                                        input_model['near'], input_model['far'],                        # input_model['near'], input_model['far'] torch.Size([512, 1]) 标量表示远近 near全是0 far全是2 范围是多少？
+        render_out, logs_render = runner.renderer.render(input_model['rays_o'], input_model['rays_d'],    
+                                        input_model['near'], input_model['far'],                       
                                         background_rgb=input_model['background_rgb'],
                                         alpha_inter_ratio=runner.get_alpha_inter_ratio())
         logs_summary.update(logs_render)
 
-        patchmatch_out, logs_patchmatch = runner.patch_match(input_model, render_out) # 是啥作用 计算Normalized Cross Correlation 用于衡量 visual consistency
+        patchmatch_out, logs_patchmatch = runner.patch_match(input_model, render_out) 
         logs_summary.update(logs_patchmatch)
 
         sdf_loss, logs_loss, mask_keep_gt_normal = runner.loss_neus(input_model, render_out, runner.sdf_network_fine, patchmatch_out)
@@ -443,67 +443,6 @@ def training_report(tb_writer, iteration, Ll1, loss, l1_loss, elapsed, testing_i
             tb_writer.add_scalar('total_points', scene.gaussians.get_xyz.shape[0], iteration)
         torch.cuda.empty_cache()
 
-def normal_estimation(input_height, input_width, imgs_dir, results_dir, architecture='BN'):
-    checkpoint = './submodules/surface_normal_uncertainty/checkpoints/%s.pt' % "scannet"
-    print('loading checkpoint... {}'.format(checkpoint))
-    model = NNET(architecture).to(device="cuda")
-    model = sne_utils.load_checkpoint(checkpoint, model)
-    model.eval()
-    print('loading checkpoint... / done')
-    os.makedirs(results_dir, exist_ok=True)
-    test_loader = CustomLoader(input_height, input_width, imgs_dir).data
-    normal_gt_dict = sne_test(model,test_loader, "cuda", results_dir)
-    return normal_gt_dict
-
-
-def sne_test(model, test_loader, device, results_dir):
-    alpha_max = 60
-    kappa_max = 30
-    
-    # 检查是否存在已保存的normal_gt_dict文件
-    normal_gt_dict_path = os.path.join(results_dir, 'normal_gt_dict.pkl')
-    if os.path.exists(normal_gt_dict_path):
-        with open(normal_gt_dict_path, 'rb') as f:
-            normal_gt_dict = pickle.load(f)
-        print(f"Loaded normal_gt_dict from {normal_gt_dict_path}")
-        return normal_gt_dict
-    
-    # 计算normal_gt并保存
-    normal_gt_dict = {}
-
-    with torch.no_grad():
-        for data_dict in tqdm(test_loader):
-            img_info = {}
-
-            img = data_dict['img'].to(device)
-            norm_out_list, _, _ = model(img)
-            norm_out = norm_out_list[-1]
-
-            pred_norm = norm_out[:, :3, :, :]               # (B, 3, H, W)
-            pred_kappa = norm_out[:, 3:, :, :]
-            img_info.update({'pred_norm': pred_norm[0]})       # (3, H, W)
-            # img_info.update({'pred_norm': pred_norm.cpu().numpy()})
-            # img_info.update({'pred_kappa': pred_kappa.cpu().numpy()})
-
-            # to numpy arrays
-            img = img.detach().cpu().permute(0, 2, 3, 1).numpy()                    # (B, H, W, 3)
-            pred_norm = pred_norm.detach().cpu().permute(0, 2, 3, 1).numpy()        # (B, H, W, 3)
-            pred_kappa = pred_kappa.cpu().permute(0, 2, 3, 1).numpy()
-
-
-            img_info.update({'pred_norm_ndarray': pred_norm})
-
-            # save results
-            img_name = data_dict['img_name'][0]
-            normal_gt_dict.update({img_name: img_info})
-
-    # 保存normal_gt_dict
-    with open(normal_gt_dict_path, 'wb') as f:
-        pickle.dump(normal_gt_dict, f)
-    print(f"Saved normal_gt_dict to {normal_gt_dict_path}")
-
-    return normal_gt_dict
-
 def show_normal(img_path, tensor_CHW):
     tensor_HWC = tensor_CHW.detach().cpu().permute(1, 2, 0).numpy() 
     normal_rgb = ((tensor_HWC + 1) * 0.5) * 255
@@ -590,7 +529,7 @@ if __name__ == "__main__":
     parser.add_argument('--is_gs_edge',      type=bool, default=True)
     parser.add_argument('--is_geometry_gui', type=bool, default=True)  # sdf指导高斯densify & prune
     parser.add_argument('--is_sample_gui',   type=bool, default=True)  # gs depth指导sdf采样
-    parser.add_argument('--is_anchor',       type=bool, default=True)  # sdf生成锚点利于高斯在正常位置生长
+    parser.add_argument('--is_anchor',       type=bool, default=True)  # sdf生成锚点利于高斯在合理位置生长
 
     args = parser.parse_args(sys.argv[1:])
     args.save_iterations.append(args.iterations)
