@@ -3,7 +3,7 @@
 <h1 align="center">GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction</h1>
 <!--   <h2 align="center">ICML 2024</h2> -->
 
-[Haodong Xiang*](https://github.com/xhd0612), [Xinghui Li*](xxx), [Kai Cheng*](https://cklibra.github.io/), [Xiansong Lai](xxx), [Wanting Zhang](xxx), [Zhichao Liao](xxx), [Long Zeng](xxx)✉, [Xueping Liu](https://www.sigs.tsinghua.edu.cn/lxp/main.htm)✉
+[Haodong Xiang*](https://github.com/xhd0612), [Xinghui Li*](xxx), [Kai Cheng*](https://cklibra.github.io/), [Xiansong Lai](xxx), [Wanting Zhang](xxx), [Zhichao Liao](https://lzc-sg.github.io/), [Long Zeng](xxx)✉, [Xueping Liu](https://www.sigs.tsinghua.edu.cn/lxp/main.htm)✉
 
 ### [[`Project Page`](https://xhd0612.github.io/GaussianRoom.github.io/)][[`arxiv`](https://arxiv.org/abs/2405.19671)][[`Paper`](https://arxiv.org/pdf/2405.19671)]
 
