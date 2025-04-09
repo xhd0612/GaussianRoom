@@ -102,9 +102,9 @@ If our work is helpful to your research, please consider citing:
 
 ```
 @article{xiang2024gaussianroom,
-  title={GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction},
-  author={Xiang, Haodong and Li, Xinghui and Lai, Xiansong and Zhang, Wanting and Liao, Zhichao and Cheng, Kai and Liu, Xueping},
-  journal={arXiv preprint arXiv:2405.19671},
-  year={2024}
-}
+      title={Gaussianroom: Improving 3d gaussian splatting with sdf guidance and monocular cues for indoor scene reconstruction},
+      author={Xiang, Haodong and Li, Xinghui and Cheng, Kai and Lai, Xiansong and Zhang, Wanting and Liao, Zhichao and Zeng, Long and Liu, Xueping},
+      journal={arXiv preprint arXiv:2405.19671},
+      year={2024}
+    }
 ```
